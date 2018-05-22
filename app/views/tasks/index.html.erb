@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= Task.model_name.human %></h1>
-
+<%= render 'search', q: @q  %>
 <table>
   <thead>
     <tr>

@@ -4,8 +4,9 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
-    @tasks = @tasks.order_list(sort_param)
+    @q = Task.ransack(params[:q])
+    @tasks = @q.result(distinct: true)
+    @tasks = @tasks.order_list(sort_param).order(created_at: 'asc')
   end
 
   # GET /tasks/1
@@ -70,7 +71,7 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :deadline, :priority, :status)
+      params.require(:task).permit(:title, :description, :deadline, :priority, :status, :q)
     end
     
     # ソート用 params[:s] = ['asc', 'asc']
