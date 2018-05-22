@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= Task.human_attribute_name(:title) %></strong>
   <%= @task.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Task.human_attribute_name(:description) %></strong>
   <%= @task.description %>
 </p>
 
 <p>
-  <strong>Deadline:</strong>
+  <strong><%= Task.human_attribute_name(:deadline) %></strong>
   <%= @task.deadline %>
 </p>
 
 <p>
-  <strong>Priority:</strong>
+  <strong><%= Task.human_attribute_name(:priority) %></strong>
   <%= @task.priority %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%= Task.human_attribute_name(:status) %></strong>
   <%= @task.status %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to t('label.edit'), edit_task_path(@task) %> |
+<%= link_to t('label.back'), tasks_path %>

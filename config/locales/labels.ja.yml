@@ -1,0 +1,13 @@
+# ボタンやリンク
+ja:
+  label:
+    index: 一覧
+    show: 詳細
+    new: 新規作成
+    create: 登録
+    edit: 編集
+    update: 更新
+    destroy: 削除
+    reload: 画面再読込
+    back: 戻る
+    cancel: キャンセル

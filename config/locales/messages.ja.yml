@@ -1,0 +1,8 @@
+# flash や alert で出すメッセージ
+ja:
+  message:
+    created: '%{name}を登録しました。'
+    updated: '%{name}を編集しました。'
+    destroyed: &destroyed '%{name}を削除しました。'
+    deleted: *destroyed
+    destroy_confirm: 本当に削除してもいいですか？

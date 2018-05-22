@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all
+    @tasks = @tasks.order_list(sort_param)
   end
 
   # GET /tasks/1
@@ -28,7 +29,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to @task, notice: t('message.created'), name: @task }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @task, notice: t('message.updated'), name: @task }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: t('message.destroyed'), name: @task }
       format.json { head :no_content }
     end
   end
@@ -70,5 +71,10 @@ class TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:title, :description, :deadline, :priority, :status)
+    end
+    
+    # ソート用 params[:s] = ['asc', 'asc']
+    def sort_param
+      params.permit(s: [])[:s]
     end
 end
