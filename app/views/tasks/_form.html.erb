@@ -11,32 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="form-group">
+    <label><%= Task.human_attribute_name(:title) %></label>
+      <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <label><%= Task.human_attribute_name(:description) %></label>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :deadline %>
-    <%= form.datetime_select :deadline %>
+  <div class="form-group">
+    <label><%= Task.human_attribute_name(:deadline) %></label>
+    <%= form.datetime_select :deadline, {}, class: "input-mini" %>
   </div>
 
-  <div class="field">
-    <%= form.label :priority %>
-    <%= form.number_field :priority %>
+  <div class="form-group">
+    <label><%= Task.human_attribute_name(:priority) %></label>
+    <%= form.number_field :priority, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
+  <div class="form-group">
+    <label><%= Task.human_attribute_name(:status) %></label>
+    <%= form.number_field :status, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit t('label.create') %>
-  </div>
+  <%= form.submit t('label.create'), class: 'btn btn-outline-primary btn-block' %>
 <% end %>
