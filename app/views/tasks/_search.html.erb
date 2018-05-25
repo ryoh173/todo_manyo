@@ -1,5 +1,22 @@
-<%= search_form_for @q do |f| %>
-  <%= f.label :title_or_description_cont %>
-  <%= f.search_field :title_or_description_cont %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class="container">
+  <%= search_form_for @q do |f| %>
+    <div class="form-group row">
+      <div class="col-md-3">
+        <%= f.label 'タイトル/説明' %>
+        <%= f.search_field :title_or_description_cont, :class => 'form-control' %>
+      </div>
+      <div class="col-md-3">
+        <%= f.label 'ステータス' %>
+        <%= f.select :status_eq, ['未着手', '作業中', '完了'], {}, :class => 'form-control' %>
+      </div>
+      <div class="order-lg-last">
+        <%= f.submit "検索", :class => 'btn btn-outline-info' %>
+        <%= link_to '全て表示', tasks_path(q: {_: ''}), class: 'btn btn-outline-info' %>
+      </div>
+      
+    </div>
+  <% end %>
+</div>
+
+    
+  
